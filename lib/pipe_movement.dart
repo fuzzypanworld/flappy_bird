@@ -1,0 +1,4 @@
+enum PipeMovement{
+  top,
+  bottom,
+}
