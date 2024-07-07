@@ -1,4 +1,4 @@
-enum PipeMovement{
+enum PipePostion{
   top,
   bottom,
 }
