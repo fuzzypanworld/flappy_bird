@@ -28,6 +28,7 @@ with HasGameRef<FlappyBirdGame>{
     break;
     case PipePostion.bottom:
     position.y = gameRef.size.y - size.y - Config.groundHeight;
+    sprite = Sprite(pipe);
     break;
 
   }
