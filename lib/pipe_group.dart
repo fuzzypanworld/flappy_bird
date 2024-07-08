@@ -5,6 +5,7 @@ import 'package:flappy_bird/config.dart';
 import 'package:flappy_bird/flappy_bird_game.dart';
 import 'package:flappy_bird/pipe.dart';
 import 'package:flappy_bird/pipe_movement.dart';
+import 'package:flutter/foundation.dart';
 
 
 class PipeGroup extends PositionComponent with HasGameRef <FlappyBirdGame> {
@@ -30,6 +31,11 @@ position.x=gameRef.size.x;
    
     super.update(dt);
     position.x-= Config.gameSpeed * dt;
+       
+    if(position.x < -10){
+      removeFromParent();
+      debugPrint('PASS!');
+    }
 
   }
 

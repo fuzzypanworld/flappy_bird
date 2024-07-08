@@ -1,12 +1,22 @@
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flappy_bird/assets.dart';
 import 'package:flappy_bird/bird_movement.dart';
 import 'package:flappy_bird/config.dart';
 import 'package:flappy_bird/flappy_bird_game.dart';
+import 'package:flutter/widgets.dart';
 
 class Bird extends SpriteGroupComponent<BirdMovement>
 with HasGameRef<FlappyBirdGame>{
 Bird();
+
+void fly(){
+  add(
+    MoveByEffect(Vector2(0,Config.gravity), EffectController(duration: 0.2, curve: Curves.decelerate)
+  )
+  
+  );
+}
 
 @override 
 Future<void>onLoad() async{
