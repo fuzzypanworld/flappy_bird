@@ -1,20 +1,28 @@
+import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flappy_bird/flappy_bird_game.dart';
+import 'package:flappy_bird/game_over_screen.dart';
+import 'package:flappy_bird/main_menu_screen.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() {
-  runApp(MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final game = FlappyBirdGame(); // Create an instance of your game
-    return MaterialApp(
-      title: 'Flappy Bird Game',
-      home: Scaffold(
-        body: GameWidget(game: game), // Pass the game instance to your GameWidget
-      ),
-    );
-  }
+Future<void> main() async {
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  WidgetsFlutterBinding.ensureInitialized();
+  await Flame.device.fullScreen();
+
+  final game = FlappyBirdGame();
+  runApp(
+    GameWidget(
+      game: game,
+      initialActiveOverlays: const [MainMenuScreen.id],
+      overlayBuilderMap: {
+        'mainMenu': (context, _) => MainMenuScreen(game: game),
+        'gameOver': (context, _) => GameOverScreen(game: game),
+      },
+    ),
+  );
 }

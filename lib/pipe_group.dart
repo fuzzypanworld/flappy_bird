@@ -33,7 +33,9 @@ position.x=gameRef.size.x;
     position.x-= Config.gameSpeed * dt;
        
     if(position.x < -10){
+    
       removeFromParent();
+      
       debugPrint('PASS!');
     }
 

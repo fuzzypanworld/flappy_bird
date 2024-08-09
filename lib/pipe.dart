@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flappy_bird/assets.dart';
@@ -32,5 +33,6 @@ with HasGameRef<FlappyBirdGame>{
     break;
 
   }
+  add(RectangleHitbox());
  }
 }
